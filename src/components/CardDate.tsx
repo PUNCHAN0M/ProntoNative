@@ -2,23 +2,28 @@ import React from "react";
 import { Text, View, StyleSheet, Dimensions } from "react-native";
 const { width, height } = Dimensions.get("screen");
 // Renamed the component to follow proper naming conventions
-const CardDate = ({ title, day, month, year }) => {
+interface CardDateProps {
+  title: string;
+  day: number;
+  month: number;
+  year: number;
+}
+const CardDate: React.FC<CardDateProps> = ({ title, day, month, year }) => {
   return (
-
-      <View style={styles.containerInner}>
-        <Text style={styles.titleType}>{title}</Text>
-        <View style={styles.containerDate}>
-          <View style={styles.date}>
-            <Text style={styles.dateFont}>{day}</Text>
-          </View>
-          <View style={styles.month}>
-            <Text style={styles.dateFont}>{month}</Text>
-          </View>
-          <View style={styles.year}>
-            <Text style={styles.dateFont}>{year}</Text>
-          </View>
+    <View style={styles.containerInner}>
+      <Text style={styles.titleType}>{title}</Text>
+      <View style={styles.containerDate}>
+        <View>
+          <Text style={styles.dateFont}>{day}</Text>
+        </View>
+        <View>
+          <Text style={styles.dateFont}>{month}</Text>
+        </View>
+        <View>
+          <Text style={styles.dateFont}>{year}</Text>
         </View>
       </View>
+    </View>
   );
 };
 
@@ -31,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: "center",
     width: width * 0.65,
-    marginVertical:15
+    marginVertical: 15,
   },
   titleType: {
     color: "white",

@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from "react-native";
 export default function Munu() {
   return (
     <>
-      <MenuPage typeItem="CouplingNormex" expiredDate={10} timePriod={10}/>
+      <MenuPage/>
     </>
   );
 }

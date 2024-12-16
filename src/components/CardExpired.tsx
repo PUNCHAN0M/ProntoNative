@@ -4,7 +4,16 @@ import Svg, { Circle, Text as SvgText } from "react-native-svg";
 
 const { width, height } = Dimensions.get("screen");
 
-const CardExpired = ({ title, model, usedTime = 51 }) => {
+interface CardExpiredProps {
+  title: string;
+  model: any;
+  usedTime: number;
+}
+const CardExpired: React.FC<CardExpiredProps> = ({
+  title,
+  model,
+  usedTime = 51,
+}) => {
   // ขนาดของวงกลม (เช่น ขนาดของกราฟ)
   const radius = 70; // ปรับขนาดของวงกลม
   const strokeWidth = 20; // เพิ่มขนาด stroke ใหญ่ขึ้น
@@ -41,7 +50,6 @@ const CardExpired = ({ title, model, usedTime = 51 }) => {
                 r={radius}
                 stroke="#e0e0e0"
                 strokeWidth={strokeWidth}
-                strokeAlign="inner"
                 fill="none"
               />
               {/* Foreground Circle (Progress Circle) */}
@@ -51,7 +59,6 @@ const CardExpired = ({ title, model, usedTime = 51 }) => {
                 r={radius}
                 stroke="#A2594D"
                 strokeWidth={strokeWidth}
-                strokeAlign="inner"
                 fill="none"
                 strokeDasharray={circumference}
                 strokeDashoffset={circumference - progress}
@@ -94,7 +101,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   infoTitle: {
-    color: "black",
     fontSize: 30,
     fontWeight: "bold",
     color: "#012042",
@@ -114,8 +120,7 @@ const styles = StyleSheet.create({
     height: 200,
     width: 200,
   },
-  cardInner: {
-  },
+  cardInner: {},
   graphContainer: {
     justifyContent: "center",
     alignItems: "center",
@@ -144,12 +149,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "black",
   },
-  containerInner:{
-    backgroundColor:"#C0BDBD",
-    borderRadius:30,
-    padding:20,
-    marginTop:10,
-    justifyContent:"center",
-    alignItems:"center"
-  }
+  containerInner: {
+    backgroundColor: "#C0BDBD",
+    borderRadius: 30,
+    padding: 20,
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

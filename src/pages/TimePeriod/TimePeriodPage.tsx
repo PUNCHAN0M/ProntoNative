@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import globalStyles from "../../styles/globalStyle";
 import CardTimePeriod from "../../components/CardTimePeriod";
 
-const CouplingNormexPicture = require("../../assets/Infomation/CouplingNormex/CouplingNormex.png");
+const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
 
-const TimePeriodPage = ({ navigation }) => {
+const TimePeriodPage = () => {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <CardTimePeriod title="infomation" model={CouplingNormexPicture} ></CardTimePeriod>

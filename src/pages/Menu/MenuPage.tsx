@@ -16,13 +16,13 @@ const scanIcon = require("../../assets/scanIcon.png");
 const prontoLogo = require("../../assets/ProntoIcon.png");
 const rotateIcon = require("../../assets/rotateIcon.png");
 
-interface MenuProp {
-  typeItem: string;
-  expiredDate: number;
-  timePriod: number;
-}
+// interface MenuProp {
+//   typeItem: string;
+//   expiredDate: number;
+//   timePriod: number;
+// }
 
-const MenuPage:React.FC<MenuProp> = ({typeItem,expiredDate,timePriod}) => {
+const MenuPage = () => {
   const menuIcon = [
     { icon: require("../../assets/infoIcon.png"), name: "Information" },
     { icon: require("../../assets/materialIcon.png"), name: "Materials" },
@@ -54,10 +54,24 @@ const MenuPage:React.FC<MenuProp> = ({typeItem,expiredDate,timePriod}) => {
         })
         break;
       case "Expired date":
-        // navigation.navigate("ExpiredDate");
+        router.push({
+          pathname:"/Expired/Expired",
+          params:{
+            typeItem:"ComplingNormax",
+            expiredDate:10,
+            timePriod:10
+          }
+        })
         break;
       case "Time Period":
-        // navigation.navigate("TimePeriod");
+        router.push({
+          pathname:"/TimePeriod/TimePeriod",
+          params:{
+            typeItem:"ComplingNormax",
+            expiredDate:10,
+            timePriod:10
+          }
+        })
         break;
       default:
         console.log("No matching screen found.");

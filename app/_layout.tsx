@@ -1,10 +1,16 @@
-import { Stack } from "expo-router"
+import { Stack } from "expo-router";
 
 const RooLayout = () => {
-    return (<Stack>
-        <Stack.Screen name="Home" />
-        <Stack.Screen name="ScanQR" />
-        <Stack.Screen />
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false, // Correct syntax to hide headers
+      }}
+    >
+      <Stack.Screen name="Home" />
+      <Stack.Screen name="ScanQR" />
+    </Stack>
+  );
+};
 
-    </Stack>)
-}
+export default RooLayout;

@@ -40,6 +40,7 @@ const CouplingNormex = () => {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <ScrollView
+        scrollEnabled
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
