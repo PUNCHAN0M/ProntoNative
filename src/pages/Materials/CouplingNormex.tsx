@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 30,
+    paddingTop: 10,
   },
   infoPicture: {
     backgroundColor: "#D9D9D9",
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 20,
     borderRadius: 30,
+    marginBottom:20
   },
   detailTitle: {
     fontWeight: "bold",

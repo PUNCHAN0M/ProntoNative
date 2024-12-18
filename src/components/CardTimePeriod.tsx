@@ -15,7 +15,7 @@ const CardTimePeriod:React.FC<CardTimePeriodProps> = ({ title, model }) => {
     <View style={styles.shadown}>
       <View style={styles.infoPicture}>
         <Text style={styles.infoTitle}>{title}</Text>
-        <Image source={{ uri: model }} style={styles.image}></Image>
+        <Image source={model ? model : null} style={styles.image}></Image>
         <Text style={styles.typeTitle}>Coupling Normex</Text>
         <View style={styles.containerOuter}>
           <CardDate title="Production Date" day={12} month={12} year={2024} />
