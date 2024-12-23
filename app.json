@@ -4,7 +4,7 @@
     "slug": "ProntoNative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/ProntoIcon.png",
+    "icon": "./src/assets/ProntoIcon2.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/ProntoIcon.png",
+        "foregroundImage": "./src/assets/ProntoIcon2.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.punchan0m.ProntoNative"
