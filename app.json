@@ -28,7 +28,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./src/assets/ProntoIcon.png",
+          "image": "./src/assets/Pronto-Splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -41,9 +41,6 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "fea1fe76-6139-4882-b476-8484dceecf16"
       }
     }
   }
