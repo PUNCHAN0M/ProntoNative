@@ -4,7 +4,7 @@
     "slug": "ProntoNative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/ProntoIcon.png",
+    "icon": "./src/assets/ProntoIcon2.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,8 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/ProntoIcon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/ProntoIcon2.png",
+        "backgroundColor": "#012042"
       },
       "package": "com.punchan0m.ProntoNative"
     },
@@ -29,9 +29,8 @@
         "expo-splash-screen",
         {
           "image": "./src/assets/Pronto-Splash.png",
-          "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#012042"
         }
       ]
     ],
@@ -41,6 +40,9 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "fea1fe76-6139-4882-b476-8484dceecf16"
       }
     }
   }

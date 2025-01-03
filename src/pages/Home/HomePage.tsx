@@ -50,7 +50,9 @@ const HomePages = () => {
   };
   const handleGoScanQR = () => {
     if (conditionStatus) {
-      router.push('/ScanQR')
+      router.push({
+        pathname: '/ScanQR',
+      });
     } else {
       alert("Please agree to the terms and conditions.");
     }
