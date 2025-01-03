@@ -28,7 +28,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./src/assets/Pronto-Splash.png",
+          "image": "./src/assets/ProntoIcon2.png",
           "resizeMode": "contain",
           "backgroundColor": "#012042"
         }
