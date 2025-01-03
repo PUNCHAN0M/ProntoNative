@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get("screen");
 
 interface CardTimePeriodProps {
   title: string;
-  model: string;
+  model: any;
   baseDay: string;
   baseMonth: string;
   baseYear: string;
