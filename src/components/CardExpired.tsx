@@ -7,26 +7,27 @@ const { width, height } = Dimensions.get("screen");
 interface CardExpiredProps {
   title: string;
   model: any;
-  usedTime: number;
+  usedTime: string;
 }
 const CardExpired: React.FC<CardExpiredProps> = ({
   title,
   model,
-  usedTime = 51,
+  usedTime,
 }) => {
   // ขนาดของวงกลม (เช่น ขนาดของกราฟ)
+  const timeUsed = Math.min(Math.max(Number(usedTime) || 0, 0), 100);
   const radius = 70; // ปรับขนาดของวงกลม
   const strokeWidth = 20; // เพิ่มขนาด stroke ใหญ่ขึ้น
   const circumference = 2 * Math.PI * radius;
-  const progress = (usedTime / 100) * circumference;
+  const progress = (timeUsed / 100) * circumference;
 
-  // ฟังก์ชันเพื่อกำหนดเงื่อนไขที่แสดงขึ้นตาม usedTime
+  // ฟังก์ชันเพื่อกำหนดเงื่อนไขที่แสดงขึ้นตาม timeUsed
   const getConditionText = () => {
-    if (usedTime >= 90) {
-      return "100% in ideal conditions";
-    } else if (usedTime >= 80) {
+    if (timeUsed >= 90) {
+      return "100-90% in ideal conditions";
+    } else if (timeUsed >= 80) {
       return "80-90% in moderately challenging conditions";
-    } else if (usedTime >= 50) {
+    } else if (timeUsed >= 50) {
       return "50-70% in demanding conditions";
     } else {
       return "Less than 50% in poor or harsh conditions";
@@ -74,13 +75,13 @@ const CardExpired: React.FC<CardExpiredProps> = ({
                 fontWeight="bold"
                 fill="#012042"
               >
-                {usedTime}%
+                {timeUsed}%
               </SvgText>
             </Svg>
           </View>
 
           <View style={styles.cardInner}>
-            <Text style={styles.conditionTitle}>Used Time {usedTime}%</Text>
+            <Text style={styles.conditionTitle}>Used Time {timeUsed}%</Text>
             <Text style={styles.conditionText}>{getConditionText()}</Text>
           </View>
         </View>

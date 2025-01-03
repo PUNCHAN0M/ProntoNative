@@ -14,13 +14,13 @@ const CardDate: React.FC<CardDateProps> = ({ title, day, month, year }) => {
       <Text style={styles.titleType}>{title}</Text>
       <View style={styles.containerDate}>
         <View>
-          <Text style={styles.dateFont}>{day}</Text>
+          <Text style={[styles.dateFont, { width: 50 }]}>{day}</Text>
         </View>
         <View>
-          <Text style={styles.dateFont}>{month}</Text>
+          <Text style={[styles.dateFont, { width: 50 }]}>{month}</Text>
         </View>
         <View>
-          <Text style={styles.dateFont}>{year}</Text>
+          <Text style={[styles.dateFont, { width: 75 }]}>{year}</Text>
         </View>
       </View>
     </View>
@@ -58,5 +58,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingHorizontal: 5,
     paddingVertical: 5,
+    textAlign:"center",
   },
 });

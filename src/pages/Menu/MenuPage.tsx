@@ -10,68 +10,85 @@ import {
 } from "react-native";
 import globalStyles from "../../styles/globalStyle";
 import { router } from "expo-router";
+import { calculateExpiredDateDetails } from "@/src/utility/calculateExpiredDateDetails";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
 const prontoLogo = require("../../assets/Pronto.png");
 const rotateIcon = require("../../assets/rotateIcon.png");
 
-// interface MenuProp {
-//   typeItem: string;
-//   expiredDate: number;
-//   timePriod: number;
-// }
+interface MenuProp {
+  typeItem: string;
+  expiredDate: string;
+  timePriod: string;
+}
 
-const MenuPage = () => {
+const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
   const menuIcon = [
     { icon: require("../../assets/infoIcon.png"), name: "Information" },
     { icon: require("../../assets/materialIcon.png"), name: "Materials" },
     { icon: require("../../assets/expiredIcon.png"), name: "Expired date" },
     { icon: require("../../assets/timeIcon.png"), name: "Time Period" },
   ];
-  const handlePressMenu = (title:string) => {
+  const handlePressMenu = (title: string) => {
     console.log(`navigate : ${title}`);
+
+    // Use the utility function to get the expired date details
+    const {
+      baseDay,
+      baseMonth,
+      baseYear,
+      expiredDay,
+      expiredMonth,
+      expiredYear,
+      daysRemaining,
+      elapsedPercentage,
+    } = calculateExpiredDateDetails(timePriod, expiredDate);
+
+    console.log(`expired D/M/Y : ${expiredDay}/${expiredMonth}/${expiredYear}`);
+    console.log(`daysRemaining : ${daysRemaining}`);
+    console.log(`elapsedPercentage : ${elapsedPercentage}`);
 
     switch (title) {
       case "Information":
         router.push({
-          pathname:"/Information/CouplingNormex",
-          params:{
-            typeItem:"ComplingNormax",
-            expiredDate:10,
-            timePriod:10
-          }
-        })
+          pathname: "/Information/CouplingNormex",
+          params: {
+            typeItem: typeItem,
+          },
+        });
         break;
       case "Materials":
         router.push({
-          pathname:"/Materials/CouplingNormex",
-          params:{
-            typeItem:"ComplingNormax",
-            expiredDate:10,
-            timePriod:10
-          }
-        })
+          pathname: "/Materials/CouplingNormex",
+          params: {
+            typeItem: typeItem,
+          },
+        });
         break;
       case "Expired date":
         router.push({
-          pathname:"/Expired/Expired",
-          params:{
-            typeItem:"ComplingNormax",
-            expiredDate:10,
-            timePriod:10
-          }
-        })
+          pathname: "/Expired/Expired",
+          params: {
+            typeItem: typeItem,
+            expiredDate: elapsedPercentage,
+            timePriod: timePriod,
+          },
+        });
         break;
       case "Time Period":
         router.push({
-          pathname:"/TimePeriod/TimePeriod",
-          params:{
-            typeItem:"ComplingNormax",
-            expiredDate:10,
-            timePriod:10
-          }
-        })
+          pathname: "/TimePeriod/TimePeriod",
+          params: {
+            typeItem: typeItem,
+            baseDay: baseDay,
+            baseMonth: baseMonth,
+            baseYear: baseYear,
+            expiredDay: expiredDay,
+            expiredMonth: expiredMonth,
+            expiredYear: expiredYear,
+          },
+        });
         break;
       default:
         console.log("No matching screen found.");
@@ -82,7 +99,7 @@ const MenuPage = () => {
   return (
     <View style={[globalStyles.container]}>
       <View style={styles.scanIconContainer}>
-        <TouchableOpacity onPress={() => router.push('/ScanQR')}>
+        <TouchableOpacity onPress={() => router.push("/ScanQR")}>
           <Image source={scanIcon} style={styles.scanIcon} />
         </TouchableOpacity>
       </View>

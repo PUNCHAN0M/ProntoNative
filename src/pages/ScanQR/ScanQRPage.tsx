@@ -44,7 +44,12 @@ export default function ScanQRPage() {
 
   return (
     <View style={styles.container}>
-      <Image source={prontoLogo} style={styles.cameraLogo}></Image>
+      <View style={styles.cameraLogo}>
+        <Image source={prontoLogo} style={{ width: 60, height: 60 }}></Image>
+        <Text style={{ fontWeight: "bold", color: "white", fontSize: 12 }}>
+          Pronto
+        </Text>
+      </View>
       <CameraView
         style={styles.camera}
         facing={facing}
@@ -52,7 +57,20 @@ export default function ScanQRPage() {
       ></CameraView>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-          <Text style={styles.text} onPress={() => router.push("/Munu/[id]")}>
+          <Text
+            style={styles.text}
+            onPress={() =>
+              router.push({
+                pathname: "/Munu/[id]",
+                params: {
+                  id: "1",
+                  typeItem: "ComplingNormax",
+                  expiredDate: "100", //ส่งเป็น กี่วันหมดอายุ (วัน)
+                  timePriod: "2024-11-01", //ส่งเป็น Date
+                },
+              })
+            }
+          >
             SCAN
           </Text>
         </TouchableOpacity>

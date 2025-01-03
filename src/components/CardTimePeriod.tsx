@@ -6,11 +6,26 @@ import CardDate from "./CardDate";
 const { width, height } = Dimensions.get("screen");
 
 interface CardTimePeriodProps {
-  title:string;
-  model:string
+  title: string;
+  model: string;
+  baseDay: string;
+  baseMonth: string;
+  baseYear: string;
+  expiredDay: string;
+  expiredMonth: string;
+  expiredYear: string;
 }
 
-const CardTimePeriod:React.FC<CardTimePeriodProps> = ({ title, model }) => {
+const CardTimePeriod: React.FC<CardTimePeriodProps> = ({
+  title,
+  model,
+  baseDay,
+  baseMonth,
+  baseYear,
+  expiredDay,
+  expiredMonth,
+  expiredYear,
+}) => {
   return (
     <View style={styles.shadown}>
       <View style={styles.infoPicture}>
@@ -18,8 +33,20 @@ const CardTimePeriod:React.FC<CardTimePeriodProps> = ({ title, model }) => {
         <Image source={model ? model : null} style={styles.image}></Image>
         <Text style={styles.typeTitle}>Coupling Normex</Text>
         <View style={styles.containerOuter}>
-          <CardDate title="Production Date" day={12} month={12} year={2024} />
-          <CardDate title="Production Date" day={12} month={12} year={2024} />
+          {/* Pass the production date props */}
+          <CardDate
+            title="Production Date"
+            day={+baseDay}
+            month={+baseMonth}
+            year={+baseYear}
+          />
+          {/* Pass the expired date props */}
+          <CardDate
+            title="Expired Date"
+            day={+expiredDay}
+            month={+expiredMonth}
+            year={+expiredYear}
+          />
         </View>
       </View>
     </View>
@@ -67,10 +94,10 @@ const styles = StyleSheet.create({
   containerOuter: {
     width: width * 0.7,
     backgroundColor: "#C0BDBD",
-    flexDirection:"column",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    borderRadius:20,
-    marginTop:10
+    borderRadius: 20,
+    marginTop: 10,
   },
 });
