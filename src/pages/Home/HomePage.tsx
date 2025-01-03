@@ -11,7 +11,7 @@ import {
 import globalStyles from "../../styles/globalStyle";
 import { router } from "expo-router";
 
-const prontoLogo = require("@assets/ProntoIcon.png");
+const prontoLogo = require("@assets/ProntoIcon.jpg");
 const checkBox = require("@assets/check.png");
 const checkBox_Non = require("@assets/check-non.png");
 

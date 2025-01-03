@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 
-const prontoLogo = require("@assets/ProntoIcon.png");
+const prontoLogo = require("../../assets/ProntoIcon.jpg");
 const { width, height } = Dimensions.get("window");
 
 export default function ScanQRPage() {

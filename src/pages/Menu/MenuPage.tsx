@@ -13,7 +13,7 @@ import { router } from "expo-router";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
-const prontoLogo = require("../../assets/ProntoIcon.png");
+const prontoLogo = require("../../assets/Pronto.png");
 const rotateIcon = require("../../assets/rotateIcon.png");
 
 // interface MenuProp {
