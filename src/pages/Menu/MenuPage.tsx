@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, useRef } from "react";
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
 const prontoLogo = require("../../assets/Pronto.png");
 const rotateIcon = require("../../assets/rotateIcon.png");
+const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
 
 interface MenuProp {
   typeItem: string;
@@ -52,7 +53,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
     switch (title) {
       case "Information":
         router.push({
-          pathname: "/Information/CouplingNormex",
+          pathname: "/Information/[typeItem]",
           params: {
             typeItem: typeItem,
           },
@@ -95,7 +96,6 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
         break;
     }
   };
-
   return (
     <View style={[globalStyles.container]}>
       <View style={styles.scanIconContainer}>
@@ -106,7 +106,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
       <View style={styles.container}>
         <Image source={prontoLogo} style={styles.logo} />
         <Text style={styles.logoTitle}>Pronto</Text>
-        <View style={styles.canvasContainer}></View>
+        <View style={styles.canvasContainer}><Image source={CouplingNormexPicture} style={{width:height * 0.3,height:height * 0.3}} /></View>
         <Text style={styles.title}>Coupling Normex</Text>
         <Image source={rotateIcon} style={styles.logo} />
         <View style={styles.containerMenuOut}>
@@ -144,9 +144,10 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   canvasContainer: {
-    width: width,
+    width: height * 0.3,
     height: height * 0.3,
-    backgroundColor: "red",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    borderRadius: "100%",
   },
   scanIconContainer: {
     position: "absolute",

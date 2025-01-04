@@ -64,7 +64,7 @@ export default function ScanQRPage() {
                 pathname: "/Munu/[id]",
                 params: {
                   id: "1",
-                  typeItem: "ComplingNormax",
+                  typeItem: "CouplingNormex",
                   expiredDate: "100", //ส่งเป็น กี่วันหมดอายุ (วัน)
                   timePriod: "2024-11-01", //ส่งเป็น Date
                 },

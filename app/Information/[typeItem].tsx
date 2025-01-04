@@ -1,8 +1,7 @@
-import CouplingNormex from "@/src/pages/Materials/CouplingNormex";
-import { useLocalSearchParams } from "expo-router";
+import CouplingNormex from "@/src/pages/Information/CouplingNormex";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { View } from "react-native";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 export default function Index() {
   const { typeItem } = useLocalSearchParams();

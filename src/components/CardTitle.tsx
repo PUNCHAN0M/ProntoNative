@@ -10,7 +10,12 @@ import {
 
 const { width, height } = Dimensions.get("screen");
 
-const CardTitle = ({ title ,model}) => {
+interface CardTitleProps {
+  title?: string;
+  model?: any;
+}
+
+const CardTitle:React.FC<CardTitleProps> = ({ title ,model}) => {
   return (
     <View style={styles.shadown}>
       <View style={styles.infoPicture}>
@@ -37,9 +42,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 18,
     marginBottom: 10,
-    fontSize:30,
     fontWeight:"bold",
-    color:"#012042",
   },
   shadown: {
     backgroundColor: "gray",
