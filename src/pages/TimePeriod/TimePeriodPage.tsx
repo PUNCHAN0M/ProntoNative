@@ -2,10 +2,17 @@ import { StyleSheet, Text, View } from "react-native";
 import globalStyles from "../../styles/globalStyle";
 import CardTimePeriod from "../../components/CardTimePeriod";
 import { useLocalSearchParams } from "expo-router";
+import { useEffect } from "react";
 
-const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
 
 const TimePeriodPage = () => {
+  const { typeItem } = useLocalSearchParams<{
+    typeItem: string;
+    expiredDate: string;
+  }>();
+  useEffect(() => {
+    console.log(typeItem);
+  });
   const {
     expiredDate,
     baseDay,
@@ -27,7 +34,7 @@ const TimePeriodPage = () => {
     <View style={[globalStyles.container, styles.container]}>
       <CardTimePeriod
         title="Time Period"
-        model={CouplingNormexPicture}
+        model={typeItem}
         baseDay={baseDay}
         baseMonth={baseMonth}
         baseYear={baseYear}

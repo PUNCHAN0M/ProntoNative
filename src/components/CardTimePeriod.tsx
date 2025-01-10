@@ -2,6 +2,7 @@ import React from "react";
 import { Dimensions, StyleSheet, Text, View, Image } from "react-native";
 import Svg, { Circle, Text as SvgText } from "react-native-svg";
 import CardDate from "./CardDate";
+import { getModelImage } from "../utility/imageUtils";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -26,11 +27,12 @@ const CardTimePeriod: React.FC<CardTimePeriodProps> = ({
   expiredMonth,
   expiredYear,
 }) => {
+  const imageSource = getModelImage(model);
   return (
     <View style={styles.shadown}>
       <View style={styles.infoPicture}>
         <Text style={styles.infoTitle}>{title}</Text>
-        <Image source={model ? model : null} style={styles.image}></Image>
+        {imageSource && <Image source={imageSource} style={styles.image} />}
         <Text style={styles.typeTitle}>Coupling Normex</Text>
         <View style={styles.containerOuter}>
           {/* Pass the production date props */}

@@ -11,6 +11,7 @@ import {
 import globalStyles from "../../styles/globalStyle";
 import { router } from "expo-router";
 import { calculateExpiredDateDetails } from "@/src/utility/calculateExpiredDateDetails";
+import { getModelImage } from "@/src/utility/imageUtils";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
@@ -31,6 +32,19 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
     { icon: require("../../assets/expiredIcon.png"), name: "Expired date" },
     { icon: require("../../assets/timeIcon.png"), name: "Time Period" },
   ];
+  const imageSource = getModelImage(typeItem);
+
+  const handleImage = () => {
+    switch (typeItem) {
+      case "CouplingNormex":
+        return (
+          <Image source={CouplingNormexPicture} style={styles.imageTypeItem} />
+        );
+      default:
+        return <></>;
+    }
+  };
+
   const handlePressMenu = (title: string) => {
     console.log(`navigate : ${title}`);
 
@@ -61,7 +75,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
         break;
       case "Materials":
         router.push({
-          pathname: "/Materials/CouplingNormex",
+          pathname: "/Materials/[typeItem]",
           params: {
             typeItem: typeItem,
           },
@@ -106,8 +120,12 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
       <View style={styles.container}>
         <Image source={prontoLogo} style={styles.logo} />
         <Text style={styles.logoTitle}>Pronto</Text>
-        <View style={styles.canvasContainer}><Image source={CouplingNormexPicture} style={{width:height * 0.3,height:height * 0.3}} /></View>
-        <Text style={styles.title}>Coupling Normex</Text>
+        <View style={styles.canvasContainer}>
+          {imageSource && (
+            <Image source={imageSource} style={styles.imageTypeItem} />
+          )}
+        </View>
+        <Text style={styles.title}>{typeItem}</Text>
         <Image source={rotateIcon} style={styles.logo} />
         <View style={styles.containerMenuOut}>
           <View style={styles.containerMenuIn}>
@@ -215,5 +233,9 @@ const styles = StyleSheet.create({
     borderTopEndRadius: "10%",
     borderTopStartRadius: "10%",
     marginTop: 5,
+  },
+  imageTypeItem: {
+    width: height * 0.3,
+    height: height * 0.3,
   },
 });

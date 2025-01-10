@@ -36,7 +36,23 @@ export default function ScanQRPage() {
   }) {
     setScanned(true);
     alert(`QR Code scanned! Type: ${type}, Data: ${data}`);
-    router.push(`/Munu/[id]?qrData=${data}`);
+    console.log("data QRcode : ", data);
+
+    const [typeItem, timePeriod, expiredDate] = data.split("/");
+    
+    console.log(typeItem);  // "test"
+    console.log(timePeriod); // "1000"
+    console.log(expiredDate); // "2021-11-01"
+    
+    router.push({
+      pathname: "/Munu/Menu",
+      params: {
+        id: "1",
+        typeItem: typeItem,
+        expiredDate: timePeriod, //ส่งเป็น กี่วันหมดอายุ (วัน)
+        timePriod: expiredDate, //ส่งเป็น Date
+      },
+    });
     setTimeout(() => {
       setScanned(false);
     }, 1000);
@@ -61,9 +77,8 @@ export default function ScanQRPage() {
             style={styles.text}
             onPress={() =>
               router.push({
-                pathname: "/Munu/[id]",
+                pathname: "/Munu/Menu",
                 params: {
-                  id: "1",
                   typeItem: "CouplingNormex",
                   expiredDate: "100", //ส่งเป็น กี่วันหมดอายุ (วัน)
                   timePriod: "2024-11-01", //ส่งเป็น Date

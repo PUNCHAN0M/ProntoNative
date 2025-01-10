@@ -2,16 +2,22 @@ import { StyleSheet, Text, View } from "react-native";
 import globalStyles from "../../styles/globalStyle";
 import CardExpired from "../../components/CardExpired";
 import { useLocalSearchParams } from "expo-router";
-
-const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
+import { useEffect } from "react";
 
 const ExpiredDatePage = () => {
-  const { expiredDate } = useLocalSearchParams<{ expiredDate: string }>();
+  const { typeItem, expiredDate } = useLocalSearchParams<{
+    typeItem: string;
+    expiredDate: string;
+  }>();
+  useEffect(() => {
+    console.log(typeItem);
+  });
+
   return (
     <View style={[globalStyles.container, styles.container]}>
       <CardExpired
         title="Expired date"
-        model={CouplingNormexPicture}
+        model={typeItem}
         usedTime={expiredDate}
       />
     </View>
