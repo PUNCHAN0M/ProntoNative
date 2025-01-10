@@ -36,7 +36,7 @@ const infoDetail = [
   "5.Easy Maintenance",
   "6.Torque Transmission",
 ];
-const CouplingNormex = () => {
+const test1 = () => {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <ScrollView
@@ -71,7 +71,7 @@ const CouplingNormex = () => {
   );
 };
 
-export default CouplingNormex;
+export default test1;
 
 const styles = StyleSheet.create({
   container: {
