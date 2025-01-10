@@ -4,9 +4,6 @@ import Svg, { Circle, Text as SvgText } from "react-native-svg";
 import { getModelImage } from "../utility/imageUtils";
 
 const { width, height } = Dimensions.get("screen");
-const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
-
-const test = require("@assets/Pronto.png");
 
 interface CardExpiredProps {
   title: string;
@@ -18,8 +15,9 @@ const CardExpired: React.FC<CardExpiredProps> = ({
   model,
   usedTime,
 }) => {
-
+  const imageSource = getModelImage(model);
   // ขนาดของวงกลม (เช่น ขนาดของกราฟ)
+  console.log("usetime :",usedTime)
   const timeUsed = Math.min(Math.max(Number(usedTime) || 0, 0), 100);
   const radius = 70; // ปรับขนาดของวงกลม
   const strokeWidth = 20; // เพิ่มขนาด stroke ใหญ่ขึ้น
@@ -38,7 +36,7 @@ const CardExpired: React.FC<CardExpiredProps> = ({
       return "Less than 50% in poor or harsh conditions";
     }
   };
-  const imageSource = getModelImage(model);
+  
 
   return (
     <View style={styles.shadown}>

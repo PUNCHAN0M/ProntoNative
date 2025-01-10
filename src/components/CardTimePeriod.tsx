@@ -33,7 +33,7 @@ const CardTimePeriod: React.FC<CardTimePeriodProps> = ({
       <View style={styles.infoPicture}>
         <Text style={styles.infoTitle}>{title}</Text>
         {imageSource && <Image source={imageSource} style={styles.image} />}
-        <Text style={styles.typeTitle}>Coupling Normex</Text>
+        <Text style={styles.typeTitle}>{model}</Text>
         <View style={styles.containerOuter}>
           {/* Pass the production date props */}
           <CardDate
