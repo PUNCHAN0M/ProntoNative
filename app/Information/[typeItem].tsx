@@ -1,4 +1,5 @@
 import CouplingNormex from "@/src/pages/Information/CouplingNormex";
+import test1 from "@/src/pages/Information/test1.tsx";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -8,11 +9,14 @@ export default function Index() {
   useEffect(() => {
     console.log(typeItem);
   }, []);
-  return (
-    <>
-      {typeItem == "CouplingNormex" ? (
-        <CouplingNormex />
-      ) : (
+
+  switch (typeItem) {
+    case "CouplingNormex":
+      return <CouplingNormex />;
+    case "test":
+      return <test1 />;
+    default:
+      return (
         <View
           style={{
             flex: 1,
@@ -23,7 +27,6 @@ export default function Index() {
         >
           <Text style={{ textAlign: "center" }}>404 not found {typeItem}</Text>
         </View>
-      )}
-    </>
-  );
+      );
+  }
 }
