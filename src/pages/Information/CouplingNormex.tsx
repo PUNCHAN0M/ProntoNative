@@ -44,7 +44,7 @@ const CouplingNormex = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <CardTitle title="infomation" model={CouplingNormexPicture} />
+        <CardTitle title="Information" model={CouplingNormexPicture} />
         <View style={styles.detailContainer}>
           <DetailText text={infoDetail[0]} type="title" />
           <DetailText text={infoDetail[1]} type="paragraph" />
