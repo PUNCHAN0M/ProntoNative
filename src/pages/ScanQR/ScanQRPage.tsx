@@ -39,11 +39,11 @@ export default function ScanQRPage() {
     console.log("data QRcode : ", data);
 
     const [typeItem, timePeriod, expiredDate] = data.split("/");
-    
-    console.log(typeItem);  // "test"
+
+    console.log(typeItem); // "test"
     console.log(timePeriod); // "1000"
     console.log(expiredDate); // "2021-11-01"
-    
+
     router.push({
       pathname: "/Munu/Menu",
       params: {

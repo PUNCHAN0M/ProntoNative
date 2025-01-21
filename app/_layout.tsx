@@ -1,6 +1,5 @@
 import { Stack } from "expo-router";
 
-
 const RooLayout = () => {
   return (
     <Stack

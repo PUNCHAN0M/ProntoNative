@@ -12,6 +12,7 @@ import globalStyles from "../../styles/globalStyle";
 import { router } from "expo-router";
 import { calculateExpiredDateDetails } from "@/src/utility/calculateExpiredDateDetails";
 import { getModelImage } from "@/src/utility/imageUtils";
+import { Canvas } from "@react-three/fiber/native";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
