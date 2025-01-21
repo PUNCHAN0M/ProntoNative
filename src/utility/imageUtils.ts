@@ -4,8 +4,6 @@ const GENEVAwheel = require("@assets/Infomation/GENEVAwheel/GENEVAwheel.png");
 const BracketorMountingArm = require("@assets/Infomation/BracketorMountingArm/Bracket.png");
 const BasePlatewithBracket = require("@assets/Infomation/BasePlatewithBracket/BasePlatewithBracket.png");
 
-const Pronto = require("@assets/Pronto.png");
-const Test = require("@assets/icon.png");
 
 export const getModelImage = (model: string): ImageSourcePropType | null => {
   switch (model) {
