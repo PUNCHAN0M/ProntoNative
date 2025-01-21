@@ -124,7 +124,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
         <View style={styles.canvasContainer}>
           {imageSource && (
             <Image source={imageSource} style={styles.imageTypeItem} />
-          )}
+          )} 
         </View>
         <Text style={styles.title}>{typeItem}</Text>
         <Image source={rotateIcon} style={styles.logo} />

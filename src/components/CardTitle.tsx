@@ -12,16 +12,17 @@ const { width, height } = Dimensions.get("screen");
 
 interface CardTitleProps {
   title?: string;
-  model?: any;
+  model: any;
+  modelTitle: string;
 }
 
-const CardTitle:React.FC<CardTitleProps> = ({ title ,model}) => {
+const CardTitle:React.FC<CardTitleProps> = ({ title ,model,modelTitle}) => {
   return (
     <View style={styles.shadown}>
       <View style={styles.infoPicture}>
         <Text style={styles.infoTitle}>{title}</Text>
         <Image source={model ? model : null} style={styles.image}></Image>
-        <Text style={styles.typeTitle}>Coupling Normex</Text>
+        <Text style={styles.typeTitle}>{modelTitle}</Text>
       </View>
     </View>
   );

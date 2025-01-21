@@ -14,15 +14,13 @@ import DetailImage from "@/src/components/DetailImage";
 
 const { width, height } = Dimensions.get("window");
 
-const CouplingNormexPicture = require("../../assets/Infomation/CouplingNormex/CouplingNormex.png");
-const ElastomericPicture = require("../../assets/Materials/CouplingNormex/Elastomeric.png");
-const Full4CouplingNormexPicture = require("../../assets/Materials/CouplingNormex/Full4CouplingNormex.png");
-const syntheticrubberPicture = require("../../assets/Materials/CouplingNormex/syntheticrubber.png");
-const thermoplasticPicture = require("../../assets/Materials/CouplingNormex/thermoplastic.png");
+const Nylon11 = require("@assets/Materials/BracketorMountingArm/Nylon11.png");
+const Nylon12 = require("@assets/Materials/BracketorMountingArm/Nylon12.png");
+const Bracket = require("@assets/Infomation/BracketorMountingArm/Bracket.png");
 
 const infoDetail = [
-  "Elastomeric (rubber-like) ",
-  "Elastomeric (rubber-like) elements are flexible components commonly used in mechanical couplings such as the Normex coupling",
+  "Nylon 11 (Polyamide 11)",
+  "Nylon 11, also known as PA11, is a high-performance thermoplastic polymer derived from renewable resources (castor oil). ",
   "to provide cushioning, vibration damping, and misalignment compensation. ",
   "These elements are typically made from ",
   "synthetic rubber",
@@ -36,19 +34,13 @@ const CouplingNormex = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
+        <CardTitle title="Materials" model={Bracket} modelTitle="Bracket or Mounting Arm" />
         {/* <CardTitle title="infomation" model={CouplingNormexPicture} /> */}
         <View style={styles.detailContainer}>
-          <DetailImage image={ElastomericPicture} />
+          <DetailImage image={Nylon11} />
           <DetailText text={infoDetail[0]} type="title" />
           <DetailText text={infoDetail[1]} type="paragraph" />
-          <DetailImage image={Full4CouplingNormexPicture} />
-          <DetailText text={infoDetail[2]} type="paragraph" />
-          <DetailText text={infoDetail[3]} type="paragraph" />
-          <DetailText text={infoDetail[4]} type="title" />
-          <DetailImage image={syntheticrubberPicture} />
-          <DetailText text={infoDetail[5]} type="title" />
-          <DetailImage image={thermoplasticPicture} />
-          <DetailText text={infoDetail[6]} type="paragraph" />
+          <DetailImage image={Nylon12} />
         </View>
       </ScrollView>
     </View>
@@ -79,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 20,
     borderRadius: 30,
-    marginBottom:20
+    marginBottom: 20,
   },
   detailTitle: {
     fontWeight: "bold",

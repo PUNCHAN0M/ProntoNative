@@ -1,5 +1,8 @@
 import CouplingNormex from "@/src/pages/Materials/CouplingNormex";
-import test1 from "@/src/pages/Information/test1";
+import BracketorMountingArm from "@/src/pages/Materials/BracketorMountingArm";
+import GENEVAwheel from "@/src/pages/Materials/GENEVAwheel";
+import BasePlatewithBracket from "@/src/pages/Materials/BasePlatewithBracket";
+
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
@@ -16,20 +19,13 @@ export default function Index() {
       case "CouplingNormex":
         return <CouplingNormex />;
 
-      case "test":
-        return (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ textAlign: "center" }}>TEST</Text>
-          </View>
-        );
-
+      case "BracketorMountingArm":
+        return <BracketorMountingArm />;
+      case "GENEVAwheel":
+        return <GENEVAwheel />;
+      case "BasePlatewithBracket":
+        return <BasePlatewithBracket />;
+        
       default:
         return (
           <View
