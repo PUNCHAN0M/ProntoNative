@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -7,15 +7,17 @@ import {
   StyleSheet,
   Dimensions,
   FlatList,
+  Modal,
 } from "react-native";
 import globalStyles from "../../styles/globalStyle";
 import { router } from "expo-router";
 import { calculateExpiredDateDetails } from "@/src/utility/calculateExpiredDateDetails";
 import { getModelImage } from "@/src/utility/imageUtils";
-import { Canvas } from "@react-three/fiber/native";
+import { TextInput } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
+const settingIcon = require("../../assets/setting.png");
 const prontoLogo = require("../../assets/Pronto.png");
 const rotateIcon = require("../../assets/rotateIcon.png");
 const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/CouplingNormex.png");
@@ -111,6 +113,20 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
         break;
     }
   };
+
+  const [dialogSetting, setDialogSetting] = useState(false);
+  const [inputPath, setInputPath] = useState(`http://172.20.10.6:5173/${typeItem}`);
+  const defaultPath = `http://172.20.10.6:5173/${typeItem}`;
+
+  const handleSavePath = () => {
+    console.log("Saved Path:", inputPath);
+    setDialogSetting(false);
+  };
+
+  const handleResetPath = () => {
+    setInputPath(defaultPath);
+  };
+
   return (
     <View style={[globalStyles.container]}>
       <View style={styles.scanIconContainer}>
@@ -118,13 +134,51 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
           <Image source={scanIcon} style={styles.scanIcon} />
         </TouchableOpacity>
       </View>
+      <View style={styles.settingIconContainer}>
+        <TouchableOpacity onPress={() => setDialogSetting(true)}>
+          <Image source={settingIcon} style={styles.scanIcon} />
+        </TouchableOpacity>
+      </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={dialogSetting}
+        onRequestClose={() => setDialogSetting(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>ตั้งค่าเส้นทาง</Text>
+            <TextInput
+              style={styles.input}
+              value={inputPath}
+              onChangeText={setInputPath}
+              placeholder="กรอก URL"
+            />
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.button} onPress={handleSavePath}>
+                <Text style={styles.buttonText}>บันทึก</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={handleResetPath}>
+                <Text style={styles.buttonText}>รีเซ็ตค่าเริ่มต้น</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.container}>
         <Image source={prontoLogo} style={styles.logo} />
         <Text style={styles.logoTitle}>Pronto</Text>
         <View style={styles.canvasContainer}>
           {imageSource && (
-            <Image source={imageSource} style={styles.imageTypeItem} />
-          )} 
+            <TouchableOpacity
+              onPress={() => {
+                console.log("test");
+                router.push(`http://172.20.10.6:5173/${typeItem}`);
+              }}
+            >
+              <Image source={imageSource} style={styles.imageTypeItem} />
+            </TouchableOpacity>
+          )}
         </View>
         <Text style={styles.title}>{typeItem}</Text>
         <Image source={rotateIcon} style={styles.logo} />
@@ -238,5 +292,55 @@ const styles = StyleSheet.create({
   imageTypeItem: {
     width: height * 0.3,
     height: height * 0.3,
+  },
+  settingIconContainer: {
+    position: "absolute",
+    top: 50,
+    right: 10,
+    backgroundColor: "white",
+    borderRadius: 10,
+    padding: 5,
+    zIndex: 100,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContainer: {
+    width: width * 0.8,
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "gray",
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  button: {
+    backgroundColor: "#007BFF",
+    padding: 10,
+    borderRadius: 5,
+    flex: 1,
+    marginHorizontal: 5,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
