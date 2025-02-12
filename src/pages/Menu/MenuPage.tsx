@@ -14,6 +14,8 @@ import { router } from "expo-router";
 import { calculateExpiredDateDetails } from "@/src/utility/calculateExpiredDateDetails";
 import { getModelImage } from "@/src/utility/imageUtils";
 import { TextInput } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
 
 const { width, height } = Dimensions.get("screen");
 const scanIcon = require("../../assets/scanIcon.png");
@@ -36,17 +38,6 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
     { icon: require("../../assets/timeIcon.png"), name: "Time Period" },
   ];
   const imageSource = getModelImage(typeItem);
-
-  const handleImage = () => {
-    switch (typeItem) {
-      case "CouplingNormex":
-        return (
-          <Image source={CouplingNormexPicture} style={styles.imageTypeItem} />
-        );
-      default:
-        return <></>;
-    }
-  };
 
   const handlePressMenu = (title: string) => {
     console.log(`navigate : ${title}`);
@@ -115,16 +106,45 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
   };
 
   const [dialogSetting, setDialogSetting] = useState(false);
-  const [inputPath, setInputPath] = useState(`http://172.20.10.6:5173/${typeItem}`);
-  const defaultPath = `http://172.20.10.6:5173/${typeItem}`;
+  const [inputPath, setInputPath] = useState("");
+  const defaultPath = "172.30.89.242:5173";
 
-  const handleSavePath = () => {
-    console.log("Saved Path:", inputPath);
-    setDialogSetting(false);
+  // โหลดค่าที่เคยบันทึกไว้
+  useEffect(() => {
+    const loadStoredPath = async () => {
+      try {
+        const savedPath = await AsyncStorage.getItem("savedIPPath");
+        if (savedPath) {
+          setInputPath(savedPath);
+        } else {
+          setInputPath(defaultPath);
+        }
+      } catch (error) {
+        console.error("Error loading saved IP Path:", error);
+      }
+    };
+    loadStoredPath();
+  }, []);
+
+  // ฟังก์ชันบันทึกค่า IP
+  const handleSavePath = async () => {
+    try {
+      await AsyncStorage.setItem("savedIPPath", inputPath);
+      console.log("Saved Path:", inputPath);
+      setDialogSetting(false);
+    } catch (error) {
+      console.error("Error saving IP Path:", error);
+    }
   };
 
-  const handleResetPath = () => {
-    setInputPath(defaultPath);
+  // ฟังก์ชันรีเซ็ตเป็นค่าเริ่มต้น
+  const handleResetPath = async () => {
+    try {
+      setInputPath(defaultPath);
+      await AsyncStorage.setItem("savedIPPath", defaultPath);
+    } catch (error) {
+      console.error("Error resetting IP Path:", error);
+    }
   };
 
   return (
@@ -173,7 +193,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
             <TouchableOpacity
               onPress={() => {
                 console.log("test");
-                router.push(`http://172.20.10.6:5173/${typeItem}`);
+                router.push(`http://${defaultPath}/${typeItem}`);
               }}
             >
               <Image source={imageSource} style={styles.imageTypeItem} />
