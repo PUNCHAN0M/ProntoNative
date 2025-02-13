@@ -193,7 +193,7 @@ const MenuPage: React.FC<MenuProp> = ({ typeItem, expiredDate, timePriod }) => {
             <TouchableOpacity
               onPress={() => {
                 console.log("test");
-                router.push(`http://${defaultPath}/${typeItem}`);
+                router.push(`http://${inputPath}/${typeItem}`);
               }}
             >
               <Image source={imageSource} style={styles.imageTypeItem} />
