@@ -15,19 +15,26 @@ const prontoLogo = require("@assets/ProntoIcon.jpg");
 const checkBox = require("@assets/check.png");
 const checkBox_Non = require("@assets/check-non.png");
 
-const bulletPoints = [
-  "Camera Access Request",
-  "Our app requires access to your camera for the following features:",
-  "• [Describe specific feature] (e.g., taking profile pictures, scanning documents, video calls)",
-  "• [Another feature] (e.g., scanning barcodes, capturing media)",
-  "Please grant camera access to fully utilize these functions.",
-  "Permissions:",
-  "• This access allows the app to use your camera.",
-  "• Your camera feed will only be used for the specified features and never without your permission.",
-  "Privacy:",
-  "• We respect your privacy and will not share any images or recordings without your consent.",
-  "• You can revoke access at any time through your device’s settings.",
-];
+// const bulletPoints = [
+//   "Our app requires access to your camera for the following features:",
+//   "• [Describe specific feature] (e.g., taking profile pictures, scanning documents, video calls)",
+//   "• [Another feature] (e.g., scanning barcodes, capturing media)",
+//   "Please grant camera access to fully utilize these functions.",
+//   "Permissions:",
+//   "• This access allows the app to use your camera.",
+//   "• Your camera feed will only be used for the specified features and never without your permission.",
+//   "Privacy:",
+//   "• We respect your privacy and will not share any images or recordings without your consent.",
+//   "• You can revoke access at any time through your device’s settings.",
+// ];
+
+const bulletPoints = `Camera Access Request
+Our app requires access to your camera for the following features:[Describe specific feature] (e.g., taking profile pictures, scanning documents, video calls) [Another feature] (e.g., scanning barcodes, capturing media) Please grant camera access to fully utilize these functions.
+
+Permissions : This access allows the app to use your camera.Your camera feed will only be used for the specified features and never without your permission.
+
+Privacy : We respect your privacy and will not share any images or recordings without your consent.You can revoke access at any time through your device’s settings.
+`;
 
 const HomePages = () => {
   const [conditionPage, setConditionPage] = useState(false);
@@ -51,7 +58,7 @@ const HomePages = () => {
   const handleGoScanQR = () => {
     if (conditionStatus) {
       router.push({
-        pathname: '/ScanQR',
+        pathname: "/ScanQR",
       });
     } else {
       alert("Please agree to the terms and conditions.");
@@ -81,18 +88,20 @@ const HomePages = () => {
           <Text
             style={[
               styles.bulletPoint,
-              { marginBottom: 5, fontWeight: "bold" },
+              { marginBottom: 35, fontWeight: "bold" },
             ]}
           >
             Pronto
           </Text>
-          <Text style={styles.bulletPoint}>{bulletPoints[0]}</Text>
-          <FlatList
+          <Text style={styles.bulletPoint}>{bulletPoints}</Text>
+          {/* <Text style={styles.bulletPoint}>{bulletPoints[0]}</Text> */}
+          {/* <FlatList
             data={bulletPoints}
             renderItem={({ item }) => (
               <Text style={styles.bulletPoint}>{item}</Text>
             )}
-          />
+          /> */}
+          \
           <View style={{ marginBottom: "10%" }}>
             <View style={styles.checkboxContainer}>
               <TouchableOpacity
@@ -155,6 +164,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 12,
     marginHorizontal: 30,
+    // justifyContent: "center",
+    textAlign: "justify",
+    marginBottom:50
   },
   checkboxContainer: {
     flexDirection: "row",

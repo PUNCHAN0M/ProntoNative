@@ -67,9 +67,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   infoTitle: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#012042",
+    marginTop:20,
+    marginVertical: 10,
   },
   shadown: {
     backgroundColor: "gray",

@@ -35,7 +35,7 @@ export default function ScanQRPage() {
     data: string;
   }) {
     setScanned(true);
-    alert(`QR Code scanned! Type: ${type}, Data: ${data}`);
+    // alert(`QR Code scanned! Type: ${type}, Data: ${data}`);
     console.log("data QRcode : ", data);
 
     const [typeItem, timePeriod, expiredDate] = data.split("/");

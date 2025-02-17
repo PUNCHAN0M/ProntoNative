@@ -79,7 +79,7 @@ const CardExpired: React.FC<CardExpiredProps> = ({
                 fontWeight="bold"
                 fill="#012042"
               >
-                {timeUsed}%
+              {`${timeUsed}%`}
               </SvgText>
             </Svg>
           </View>
@@ -106,10 +106,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   infoTitle: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#012042",
-    marginBottom: 10,
+    marginTop:20,
+    marginVertical: 10,
   },
   shadown: {
     backgroundColor: "gray",

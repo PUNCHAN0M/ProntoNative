@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
   infoTitle: {
     color: "black",
     fontSize: 18,
-    marginBottom: 10,
+    marginTop:20,
+    marginVertical: 10,
     fontWeight:"bold",
   },
   shadown: {
