@@ -13,7 +13,7 @@ import DetailText from "@/src/components/DetailText";
 import DetailImage from "@/src/components/DetailImage";
 
 const { width, height } = Dimensions.get("window");
-
+const AirCompressorFanPic = require("@assets/Infomation/AirCompressorFan/AirCompressorFan.png");
 const BasePlatewithBracket = require("@assets/Infomation/BasePlatewithBracket/BasePlatewithBracket.png");
 const Nylon11 = require("@assets/Materials/BracketorMountingArm/Nylon11.png");
 const Nylon12 = require("@assets/Materials/BracketorMountingArm/Nylon12.png");
@@ -29,16 +29,16 @@ const infoDetail = [
   "Lightweight:",
   "Offers strength while being lightweight, beneficial for automotive and aerospace applications.",
 ];
-const CouplingNormex = () => {
+const AirCompressorFan = () => {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <CardTitle title="Materials" model={BasePlatewithBracket} modelTitle="Base Plate with Bracket."/>
+        <CardTitle title="Materials" model={AirCompressorFanPic} modelTitle="Air Compressor Fan"/>
         <View style={styles.detailContainer}>
-        <DetailImage image={Nylon11} />
+          <DetailImage image={Nylon11} />
           <DetailText text={infoDetail[0]} type="title" />
           <DetailText text={infoDetail[1]} type="paragraph" />
           <DetailImage image={Nylon12} />
@@ -49,13 +49,14 @@ const CouplingNormex = () => {
           <DetailText text={infoDetail[6]} type="paragraph" />
           <DetailText text={infoDetail[7]} type="title" />
           <DetailText text={infoDetail[8]} type="paragraph" />
+
         </View>
       </ScrollView>
     </View>
   );
 };
 
-export default CouplingNormex;
+export default AirCompressorFan;
 
 const styles = StyleSheet.create({
   container: {

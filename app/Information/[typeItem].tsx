@@ -8,6 +8,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import backIcon from "@assets/backIcon.png";
+import AirCompressorFanInFo from "@/src/pages/Information/AirCompressorFan";
 
 export default function Index() {
   const { typeItem } = useLocalSearchParams();
@@ -27,7 +28,8 @@ export default function Index() {
         return <GENEVAwheel />;
       case "BasePlatewithBracket":
           return <BasePlatewithBracket />;
-  
+      case "AirCompressorFan":
+        return <AirCompressorFanInFo />;
       default:
         return (
           <View

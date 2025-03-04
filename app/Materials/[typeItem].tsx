@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import { Text } from "react-native";
 import backIcon from "@assets/backIcon.png";
+import AirCompressorFan from "@/src/pages/Materials/AirCompressorFan";
 export default function Index() {
   const { typeItem } = useLocalSearchParams();
   const router = useRouter();
@@ -25,7 +26,9 @@ export default function Index() {
         return <GENEVAwheel />;
       case "BasePlatewithBracket":
         return <BasePlatewithBracket />;
-        
+      case "AirCompressorFan":
+        return <AirCompressorFan />;
+
       default:
         return (
           <View

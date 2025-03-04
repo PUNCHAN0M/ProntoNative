@@ -3,6 +3,7 @@ const CouplingNormexPicture = require("@assets/Infomation/CouplingNormex/Couplin
 const GENEVAwheel = require("@assets/Infomation/GENEVAwheel/GENEVAwheel.png");
 const BracketorMountingArm = require("@assets/Infomation/BracketorMountingArm/Bracket.png");
 const BasePlatewithBracket = require("@assets/Infomation/BasePlatewithBracket/BasePlatewithBracket.png");
+const AirCompressorFan = require("@assets/Infomation/AirCompressorFan/AirCompressorFan.png");
 
 
 export const getModelImage = (model: string): ImageSourcePropType | null => {
@@ -15,7 +16,9 @@ export const getModelImage = (model: string): ImageSourcePropType | null => {
       return BracketorMountingArm;
     case "BasePlatewithBracket":
       return BasePlatewithBracket;
-
+    case "AirCompressorFan":
+      return AirCompressorFan;
+      
     default:
       return null; // No image found
   }

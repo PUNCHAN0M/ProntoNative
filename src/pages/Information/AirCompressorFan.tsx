@@ -11,51 +11,44 @@ import globalStyles from "../../styles/globalStyle";
 import CardTitle from "@/src/components/CardTitle";
 import DetailText from "@/src/components/DetailText";
 import DetailImage from "@/src/components/DetailImage";
-
 const { width, height } = Dimensions.get("window");
 
-const BasePlatewithBracket = require("@assets/Infomation/BasePlatewithBracket/BasePlatewithBracket.png");
-const Nylon11 = require("@assets/Materials/BracketorMountingArm/Nylon11.png");
-const Nylon12 = require("@assets/Materials/BracketorMountingArm/Nylon12.png");
+const AirCompressorFan = require("@assets/Infomation/AirCompressorFan/AirCompressorFan.png");
+const waterpump = require("@assets/Infomation/AirCompressorFan/waterpump.png");
+
 
 const infoDetail = [
-  "Nylon 11 (Polyamide 11)",
-  "Nylon 11, also known as PA11, is a high-performance thermoplastic polymer derived from renewable resources (castor oil). ",
-  "     Key Properties of Nylon 11",
-  "Mechanical Strength:",
-  "High tensile and impact strength, ideal for parts subject to mechanical stresses.",
-  "Ductility:",
-  "Nylon 11 is more ductile than Nylon 12, allowing for greater elongation before breaking. This makes it suitable for applications requiring flexibility.",
-  "Lightweight:",
-  "Offers strength while being lightweight, beneficial for automotive and aerospace applications.",
+  "Possible Applications:",
+  "The Harbor Freight 67487 Air Compressor (21-gallon, 2.5 HP) is suitable for various home, garage, and light-duty workshop applications.",
+  "Features:",
+  "The Harbor Freight 67487 air compressor is a 21-gallon, 2.5 horsepower (peak) unit capable of delivering 4.7 cubic feet per minute (CFM) at 90 psi. This compressor is suitable for home hobbyist tasks such as operating nail guns and impact wrenches. However, it may struggle to keep up with high-demand tools like grinders, drills, ratchets, and paint sprayers.",
 ];
-const CouplingNormex = () => {
+const AirCompressorFanInFo = () => {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <ScrollView
+        scrollEnabled
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <CardTitle title="Materials" model={BasePlatewithBracket} modelTitle="Base Plate with Bracket."/>
+        <CardTitle
+          title="Information"
+          model={AirCompressorFan}
+          modelTitle="Air Compressor Fan"
+        />
         <View style={styles.detailContainer}>
-        <DetailImage image={Nylon11} />
           <DetailText text={infoDetail[0]} type="title" />
           <DetailText text={infoDetail[1]} type="paragraph" />
-          <DetailImage image={Nylon12} />
+          <DetailImage image={waterpump} />
           <DetailText text={infoDetail[2]} type="title" />
-          <DetailText text={infoDetail[3]} type="title" />
-          <DetailText text={infoDetail[4]} type="paragraph" />
-          <DetailText text={infoDetail[5]} type="title" />
-          <DetailText text={infoDetail[6]} type="paragraph" />
-          <DetailText text={infoDetail[7]} type="title" />
-          <DetailText text={infoDetail[8]} type="paragraph" />
+          <DetailText text={infoDetail[3]} type="paragraph" />
         </View>
       </ScrollView>
     </View>
   );
 };
 
-export default CouplingNormex;
+export default AirCompressorFanInFo;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,6 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 20,
     borderRadius: 30,
+    paddingBottom: 10,
     marginBottom: 20,
   },
   detailTitle: {
